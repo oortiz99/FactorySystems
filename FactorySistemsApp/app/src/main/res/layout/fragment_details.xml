@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".fragments.DetailsFragment"
+    android:scrollbars="none">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txvNomMaquina"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="KM 4000"
+            android:textSize="35dp"
+            android:gravity="center"
+            android:background="@drawable/error_background"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="ERROR REPORTAT PER:"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_row="1"
+            android:layout_column="0"/>
+
+        <TextView
+            android:id="@+id/txvTreballador"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Jonathan Rodriguez"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_row="2"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="TIPUS ERROR:"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_row="3"
+            android:layout_column="0"/>
+
+        <TextView
+            android:id="@+id/txvTipusError"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Error mecánic"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_row="4"
+            android:layout_column="0"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="DESCRIPCIÓ D'ERROR:"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_row="5"
+            android:layout_column="0"/>
+
+        <TextView
+            android:id="@+id/txvDescripcioError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Les peces no surten bé perque la cadena del motor s'ha soltat."
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_row="6"
+            android:layout_column="0"/>
+
+    </GridLayout>
+
+</ScrollView>
