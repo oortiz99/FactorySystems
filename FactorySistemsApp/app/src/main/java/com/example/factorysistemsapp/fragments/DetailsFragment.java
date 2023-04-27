@@ -68,6 +68,9 @@ public class DetailsFragment extends Fragment{
         if(mError.getEstat_error().equals("Pendent")){
             Drawable filaBg = binding.txvNomMaquina.getBackground();
             filaBg.setTint(Color.parseColor(red));
+        }else if(mError.getEstat_error().equals("Solucionat")){
+            Drawable filaBg = binding.txvNomMaquina.getBackground();
+            filaBg.setTint(Color.parseColor(green));
         }else{
             Drawable filaBg = binding.txvNomMaquina.getBackground();
             filaBg.setTint(Color.parseColor(orange));

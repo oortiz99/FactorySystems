@@ -16,6 +16,7 @@ import com.example.factorysistemsapp.modelo.Errores;
 import com.example.factorysistemsapp.modelo.Maquina;
 import com.example.factorysistemsapp.modelo.Treballador;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ErrorsAdapter extends RecyclerView.Adapter<ErrorsAdapter.ViewHolder>{
@@ -66,14 +67,27 @@ public class ErrorsAdapter extends RecyclerView.Adapter<ErrorsAdapter.ViewHolder
 
         for (Maquina m: maquinas){
             if(m.getId_maquina() == e.getId_maquina()){
-                System.out.println("ID MAQUINA======" + m.getId_maquina());
                 holder.maquinaName.setText(m.getNom_maquina());
             }
         }
 
-        holder.errorStatus.setText(e.getEstat_error());
+        LocalDateTime ld = e.getHora_error();
+        LocalDateTime actual = LocalDateTime.now();
 
-        if(e.getEstat_error().equals("Resolt")){
+        if(ld.getDayOfMonth() == actual.getDayOfMonth() && ld.getMonthValue() == actual.getMonthValue() && ld.getYear() == actual.getYear()){
+            int hora = ld.getHour();
+            int min = ld.getMinute();
+            holder.datetime.setText("AVUI" + "\n" + hora + ":" + min);
+        }else{
+            int dia = ld.getDayOfMonth();
+            int mes = ld.getMonthValue();
+            int any = ld.getYear();
+            int hora = ld.getHour();
+            int min = ld.getMinute();
+            holder.datetime.setText(dia + "/" + mes + "/" + any + "\n" + hora + ":" + min);
+        }
+
+        if(e.getEstat_error().equals("Solucionat")){
             Drawable filaBg = holder.f.getBackground();
             filaBg.setTint(Color.parseColor(green));
         }else if(e.getEstat_error().equals("En curs")){
@@ -98,14 +112,14 @@ public class ErrorsAdapter extends RecyclerView.Adapter<ErrorsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
         androidx.constraintlayout.widget.ConstraintLayout f;
         TextView maquinaName;
-        TextView errorStatus;
+        TextView datetime;
         View viewSelected;
 
         public ViewHolder(@NonNull View fila){
             super(fila);
             f = fila.findViewById(R.id.errorFila);
             maquinaName = fila.findViewById(R.id.txvMaquina);
-            errorStatus = fila.findViewById(R.id.txvErrorStatus);
+            datetime = fila.findViewById(R.id.txvDateTime);
             viewSelected = fila.findViewById(R.id.viewSelected);
         }
     }
