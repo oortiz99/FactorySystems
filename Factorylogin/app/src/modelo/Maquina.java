@@ -1,4 +1,4 @@
-package com.example.factorysistemsapp.modelo;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.List;

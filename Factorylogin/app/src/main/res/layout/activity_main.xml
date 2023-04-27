@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!-- Texto "Login" -->
+
+    <!-- Campo de texto para el usuario -->
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="32dp"
+        android:text="Login"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_usuario"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:padding="16dp" />
+
+    <!-- Campo de texto para la contraseña -->
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:hint="Contraseña"
+        android:inputType="textPassword" />
+
+    <!-- Botón para iniciar sesión -->
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="64dp"
+        android:text="Iniciar sesión"
+        android:textAllCaps="false"
+
+        android:textSize="18sp" />
+
+</LinearLayout>

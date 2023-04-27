@@ -1,4 +1,4 @@
-package com.example.factorysistemsapp.modelo;
+package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,23 +9,45 @@ public class Treballador {
     private String cognoms;
     private String rol;
     private String data_incorporacio;
+    private String login;
+    private String password;
 
-    public Treballador(int id_treballador, String nom, String cognoms, String rol, String data_incorporacio) {
+    public Treballador(int id_treballador, String nom, String cognoms, String rol, String data_incorporacio,String login,String password) {
         this.id_treballador = id_treballador;
         this.nom = nom;
         this.cognoms = cognoms;
         this.rol = rol;
         this.data_incorporacio = data_incorporacio;
+        this.login = login;
+        this.password = password;
+
     }
 
     public static List<Treballador> getTreballadors(){
         List<Treballador> treballadors = new ArrayList<>();
 
-        treballadors.add(new Treballador(1, "Jonathan", "Rodriguez", "Operari","29/09/2003"));
-        treballadors.add(new Treballador(2, "Oscar", "Ortiz", "Operari","20/05/2000"));
-
+        treballadors.add(new Treballador(1, "Jonathan", "Rodriguez", "Operari","29/09/2003","john03","123456789"));
+        treballadors.add(new Treballador(2, "Oscar", "Ortiz", "Operari","20/05/2000","Oscaroe","12345678"));
+        treballadors.add(new Treballador(3, "Abdelbarie", "El Harrak", "Manteniment","20/02/2001","abdelelh","12354678"));
         return treballadors;
     }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+
 
     public int getId_treballador() {
         return id_treballador;

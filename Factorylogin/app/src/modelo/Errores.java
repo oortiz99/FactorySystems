@@ -1,4 +1,4 @@
-package com.example.factorysistemsapp.modelo;
+package modelo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
