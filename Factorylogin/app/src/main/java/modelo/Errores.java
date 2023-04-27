@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDateTime;
 
 public class Errores implements Parcelable, Serializable {
     private int id_treballador;
@@ -15,13 +16,15 @@ public class Errores implements Parcelable, Serializable {
     private String estat_error;
     private String tipus_error;
     private String descripcio_error;
+    private LocalDateTime hora_error;
 
-    public Errores(int id_treballador, int id_maquina, String estat_error, String tipus_error, String descripcio_error) {
+    public Errores(int id_treballador, int id_maquina, String estat_error, String tipus_error, String descripcio_error, LocalDateTime hora_error) {
         this.id_treballador = id_treballador;
         this.id_maquina = id_maquina;
         this.estat_error = estat_error;
         this.tipus_error = tipus_error;
         this.descripcio_error = descripcio_error;
+        this.hora_error = hora_error;
     }
 
     protected Errores(Parcel in) {
@@ -33,11 +36,17 @@ public class Errores implements Parcelable, Serializable {
     }
 
     public static List<Errores> getErrors(){
-        List<Errores> errores =new ArrayList<>();
+        List<Errores> errores = new ArrayList<>();
 
-        errores.add( new Errores(1, 1, "Pendent", "Error Mecànic", "La cadena del motor no funciona correctament."));
-        errores.add( new Errores(2, 2, "Pendent", "Error Mecànic", "La cadena del motor no funciona correctament."));
-        errores.add( new Errores(1, 3, "En curs", "Error de configuració", "L'ordinador està mal configurat."));
+        LocalDateTime ld1 = LocalDateTime.of(2023, 4, 25, 12, 20);
+        LocalDateTime ld2 = LocalDateTime.of(2023, 4, 23, 11, 14);
+        LocalDateTime ld3 = LocalDateTime.of(2023, 4, 22, 9, 53);
+        LocalDateTime ld4 = LocalDateTime.of(2023, 4, 14, 16, 41);
+
+        errores.add( new Errores(1, 1, "Pendent", "Error Mecànic", "La cadena del motor no funciona correctament.", ld1));
+        errores.add( new Errores(2, 2, "Pendent", "Error Mecànic", "La cadena del motor no funciona correctament.", ld2));
+        errores.add( new Errores(1, 3, "En curs", "Error de configuració", "L'ordinador està mal configurat.", ld3));
+        errores.add( new Errores(1, 2, "Solucionat", "Error de configuració", "L'ordinador està mal configurat.", ld4));
 
         return errores;
     }
@@ -53,6 +62,14 @@ public class Errores implements Parcelable, Serializable {
             return new Errores[size];
         }
     };
+
+    public LocalDateTime getHora_error() {
+        return hora_error;
+    }
+
+    public void setHora_error(LocalDateTime hora_error) {
+        this.hora_error = hora_error;
+    }
 
     public int getId_treballador() {
         return id_treballador;

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_activeErrorsFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_activeErrorsFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -21,6 +24,29 @@
         tools:layout="@layout/fragment_details" >
         <action
             android:id="@+id/action_detailsFragment_to_activeErrorsFragment"
+            app:destination="@id/activeErrorsFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.factorysistemsapp.fragments.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_activeErrorsFragment"
+            app:destination="@id/activeErrorsFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadScreenFragment"
+        android:name="com.example.factorysistemsapp.fragments.LoadScreenFragment"
+        android:label="LoadScreenFragment" >
+        <action
+            android:id="@+id/action_loadScreenFragment_to_activeErrorsFragment"
             app:destination="@id/activeErrorsFragment" />
     </fragment>
 </navigation>

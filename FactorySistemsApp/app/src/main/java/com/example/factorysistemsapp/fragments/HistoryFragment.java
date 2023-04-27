@@ -22,39 +22,37 @@ import android.view.ViewGroup;
 
 import com.example.factorysistemsapp.R;
 import com.example.factorysistemsapp.adapters.ErrorsAdapter;
-import com.example.factorysistemsapp.databinding.FragmentActiveErrorsBinding;
+import com.example.factorysistemsapp.databinding.FragmentDetailsBinding;
+import com.example.factorysistemsapp.databinding.FragmentHistoryBinding;
 import com.example.factorysistemsapp.modelo.Errores;
 import com.example.factorysistemsapp.modelo.Maquina;
 import com.example.factorysistemsapp.modelo.Treballador;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActiveErrorsFragment extends Fragment implements ErrorsAdapter.ErrorSelectedListener{
+public class HistoryFragment extends Fragment implements ErrorsAdapter.ErrorSelectedListener{
 
-    FragmentActiveErrorsBinding binding;
-    Fragment frag = this;
+    FragmentHistoryBinding binding;
     ErrorsAdapter adapter;
     public boolean teAdapter = false;
 
     //Lists
     private List<Errores> errores = Errores.getErrors();
-    private List<Errores> erroresActivos = new ArrayList<>();
+    private List<Errores> erroresSolucionados = new ArrayList<>();
     private List<Maquina> maquinas = Maquina.getMaquinas();
     private List<Treballador> treballadors = Treballador.getTreballadors();
 
     DrawerLayout drawerLayout;
+    Fragment frag = this;
 
-    public ActiveErrorsFragment() {
+    public HistoryFragment() {
 
     }
 
-    public static ActiveErrorsFragment newInstance() {
-        ActiveErrorsFragment fragment = new ActiveErrorsFragment();
+    public static HistoryFragment newInstance() {
+        HistoryFragment fragment = new HistoryFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -71,11 +69,11 @@ public class ActiveErrorsFragment extends Fragment implements ErrorsAdapter.Erro
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentActiveErrorsBinding.inflate(inflater, container, false);
+        binding = FragmentHistoryBinding.inflate(inflater, container, false);
 
         drawerLayout = getDrawer();
 
-        //Botón del menú deslizante
+        //Nav controller BUTTON for Navigation
         binding.imbMenuButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -83,19 +81,19 @@ public class ActiveErrorsFragment extends Fragment implements ErrorsAdapter.Erro
             }
         });
 
+        // Nav controller
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navigationView, navController);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                item.setChecked(true);
                 switch (item.getItemId()){
                     case R.id.navigation_activeErrors:
+                        NavController navController =  NavHostFragment.findNavController(frag);
+                        navController.navigate(R.id.action_historyFragment_to_activeErrorsFragment);
                         drawerLayout.close();
                         break;
                     case R.id.navigation_history:
-                        NavController navController =  NavHostFragment.findNavController(frag);
-                        navController.navigate(R.id.action_activeErrorsFragment_to_historyFragment);
                         drawerLayout.close();
                         break;
                 }
@@ -103,26 +101,26 @@ public class ActiveErrorsFragment extends Fragment implements ErrorsAdapter.Erro
             }
         });
 
-        binding.rcyActiveErrors.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.rcyActiveErrors.hasFixedSize();
+        binding.rcyHistory.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rcyHistory.hasFixedSize();
 
         if(!teAdapter){
             for (Errores e: errores){
-                if(e.getEstat_error().equals("En curs") || e.getEstat_error().equals("Pendent")){
-                    erroresActivos.add(e);
+                if(e.getEstat_error().equals("Solucionat")){
+                    erroresSolucionados.add(e);
                 }
             }
 
-            adapter = new ErrorsAdapter(erroresActivos, maquinas, treballadors, this);
+            adapter = new ErrorsAdapter(erroresSolucionados, maquinas, treballadors, this);
 
-            binding.rcyActiveErrors.setAdapter(adapter);
+            binding.rcyHistory.setAdapter(adapter);
 
             teAdapter = true;
         }
 
         if(teAdapter){
-            binding.rcyActiveErrors.setAdapter(null);
-            binding.rcyActiveErrors.setAdapter(adapter);
+            binding.rcyHistory.setAdapter(null);
+            binding.rcyHistory.setAdapter(adapter);
         }
 
         return binding.getRoot();
@@ -135,6 +133,6 @@ public class ActiveErrorsFragment extends Fragment implements ErrorsAdapter.Erro
         Bundle args = new Bundle();
         args.putSerializable(DetailsFragment.ERROR, seleccionada);
 
-        navController.navigate(R.id.action_activeErrorsFragment_to_detailsFragment, args);
+        navController.navigate(R.id.action_historyFragment_to_detailsFragment, args);
     }
 }
