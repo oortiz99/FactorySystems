@@ -1,0 +1,8 @@
+Url per acceidr al Web Service :
+url : 	http://169.254.10.113/FactorySystems/public/api/
+
+Funcions que es pot cridar : 
+
+url/getErrors 
+url/getMaquinas
+url/getTreballadors
