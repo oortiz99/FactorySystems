@@ -1,8 +1,9 @@
 Url per acceidr al Web Service :
-url : 	http://169.254.10.113/FactorySystems/public/api/
+url : 	http://169.254.10.113/FactorySystems/public/api/ (Local)
+url : 	http://10.2.7.89/FactorySystems/public/api/ (VPN)
 
 Funcions que es pot cridar : 
 
-url/getErrors 
-url/getMaquinas
-url/getTreballadors
+url/getErrors GET
+url/getMaquinas GET
+url/getTreballadors GET
