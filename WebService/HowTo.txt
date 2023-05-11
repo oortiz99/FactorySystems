@@ -7,3 +7,8 @@ Funcions que es pot cridar :
 url/getErrors GET
 url/getMaquinas GET
 url/getTreballadors GET
+
+
+url/login : 
+	Params  : email, contrasenya.
+	Headers : ('Accept' :  'application/json')
