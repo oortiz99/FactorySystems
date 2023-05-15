@@ -12,3 +12,18 @@ url/getTreballadors GET
 url/login : 
 	Params  : email, contrasenya.
 	Headers : ('Accept' :  'application/json')
+
+url/reportarError : 
+	Params :$rules = [
+            		"maquina"=> "required|numeric",
+           		"treballador" => "required|numeric",
+            		"estat_error" => "required",
+            		"descripcio" => "nullable",
+            		"tipus" => "required",
+        	];
+	Headers : ('Accept' :  'application/json')
+	
+	Devuelve un response status : 200 OK, 400 Bad request si algun parametro no cumple las restrucciones.
+	Tambien devuelvo un json con los campos : message : String  
+						  errors  : array con parametros que han causado el error. 
+
