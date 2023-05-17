@@ -34,6 +34,10 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.Errores;
+import modelo.Maquina;
+import modelo.Treballador;
+
 public class ActiveErrorsFragment extends Fragment implements ErrorsAdapter.ErrorSelectedListener{
 
     FragmentActiveErrorsBinding binding;
