@@ -17,6 +17,10 @@ import com.example.factorysistemsapp.modelo.Errores;
 import com.example.factorysistemsapp.modelo.Maquina;
 import com.example.factorysistemsapp.modelo.Treballador;
 
+import modelo.Errores;
+import modelo.Maquina;
+import modelo.Treballador;
+
 public class DetailsFragment extends Fragment{
 
     FragmentDetailsBinding binding;

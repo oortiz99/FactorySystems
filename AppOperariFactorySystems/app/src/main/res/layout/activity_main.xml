@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Cabecera con el título del formulario -->
+    <TextView
+        android:id="@+id/title_textview"
+        android:text="Reporte de errores"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Contenedor principal -->
+    <LinearLayout
+        android:id="@+id/form_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_textview"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txvMaquina"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Maquina:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+        <!-- Campo para introducir el ID de la máquina -->
+        <Spinner
+            android:id="@+id/maquina_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="Maquina"
+            android:text="ID de la máquina:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+        <!-- Campo para seleccionar el tipo de error -->
+        <TextView
+            android:id="@+id/tipus_error_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Tipo de error:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/tipus_error_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="16dp" />
+
+        <!-- Separador -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray" />
+
+        <!-- Campo para agregar una descripción en caso de que los tipos de error no sean suficientes -->
+        <TextView
+            android:id="@+id/descripcio_error_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Descripción del error:"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/descripcio_error_input"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+
+            android:padding="16dp" />
+
+        <!-- Separador -->
+
+        <Button
+            android:id="@+id/enviar_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="32dp"
+
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:text="Enviar"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+</RelativeLayout>
