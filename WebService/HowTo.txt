@@ -25,5 +25,7 @@ url/reportarError :
 	
 	Devuelve un response status : 200 OK, 400 Bad request si algun parametro no cumple las restrucciones.
 	Tambien devuelvo un json con los campos : message : String  
-						  errors  : array con parametros que han causado el error. 
+						  errors  : array con parametros que han causado el error.
+
+ 
 

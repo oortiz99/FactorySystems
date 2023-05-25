@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\api\LoginController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class FactorySystemsController extends Controller
 {
@@ -15,71 +17,22 @@ class FactorySystemsController extends Controller
     public function index()
     {
         //
+        return view('index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function validarLogin(Request $request){
+        $data = array('email' =>$request->input('usr-email'),'contrasenya' => $request->input('usr-contrasenya'));
+        $controller = new LoginController();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // Crear una instancia del objeto Request con los datos necesarios
+        $request = Request::create('/login', 'POST', $data);
+        $request->headers->set('Accept', 'application/json');
+        // Llamar al método del controlador y pasarle la solicitud
+        $response = $controller->login($request);
+        $data = json_decode($response->getContent(), true); 
+        if ($data["data"]){
+            return redirect('inici');
+        }
+        return view('index');
     }
 }
